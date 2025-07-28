@@ -21,13 +21,14 @@ if (url === '/message' && method === 'POST') {
  return req.on('end', () => {
     const parsedBody = Buffer.concat(body).toString();
     const message = parsedBody.split('=')[1];
-  fs.writeFileSync("message.txt", message);
-  })
-  res.statusCode = 302;
-  res.setHeader('location', '/');
-  return res.end();
+  fs.writeFile("message.txt", message, err => {
+    res.statusCode = 302;
+    res.setHeader('Location', '/');
+    return res.end();
+  });
+  });
 }
-  res.setHeader('Content-Type', 'text/html')
+   res.setHeader('Content-Type', 'text/html')
    res.write('<html>');
    res.write('<head><title>My First Page</title><head>');
    res.write('<body><h1>Hello from my node.js Server!<h1></body>');
