@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const requestHandler = (req, res) => {
   const url = req.url;
-  const method = req.body;
+  const method = req.method;
 
 if (url === "/") {
   res.write("<html>");
