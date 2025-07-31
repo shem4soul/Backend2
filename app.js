@@ -1,9 +1,8 @@
  const http = require('http');
 
-const express = require('express');
+const routes = require('./routes')
 
-const app = express();
+ const server = http.createServer(routes)
 
- const server = http.createServer()
-
-     server.listen(3000);
+     server.listen(3002);
+     console.log("Server is running on http://localhost:3002");
